@@ -21,5 +21,11 @@ Todo lo relacionado con la API estará dentro de la ruta /api de la aplicación
     
     - Ejemplo de llamada: /api/recipes/vegan
     
+- Ruta para buscar por nombre de receta:
 
+    - Hay que acceder mediante GET a través de /recipes/find
+    
+    - Es necesario enviar un parámetro, el cual se usará como cadena de búsqueda
+    
+    - Ejemplo de llamada: /api/recipes/find/hamburger
     

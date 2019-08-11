@@ -1,7 +1,7 @@
 <?php
 
-
 namespace App\Controller;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use GuzzleHttp\Client;
@@ -29,6 +29,10 @@ abstract class BaseController extends Controller
         ));
     }
 
+    /*
+     * THIS FUNCTION CALLS THE RECIPE PUPPY API AND GENERATES AND OBJECT
+     * WITH THE STATUS CODE AND THE CONTENT
+     */
     protected function getRestful($url, $method, $body = null)
     {
         $response_object = new RestfulResponse;
@@ -41,6 +45,7 @@ abstract class BaseController extends Controller
             'debug' => false,
         ]);
 
+        //IF WE NEED TO SEND PARAMETERS IN BODY
         $arr_body = array();
         if($body != null) {
             foreach ($body AS $k => $b) {

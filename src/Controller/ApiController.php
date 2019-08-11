@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use GuzzleHttp\Client;
@@ -10,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\Annotations as FOSRest;
-
 
 /**
  * Brand controller.
@@ -55,15 +53,11 @@ class ApiController extends BaseController
     private function generateResponse(RestfulResponse $restfulResponse)
     {
         //IF 200, GET THE RESULTS AND CREATE RESPONSE
-        if($restfulResponse->code == 200)
-        {
+        if($restfulResponse->code == 200) {
             $ar = json_decode($restfulResponse->body, true);
             $results = $ar['results'];
             $response = $this->createApiResponse($results, 200);
-        }
-        //ELSE, SEND ERROR
-        else
-        {
+        } else {
             $ar = array(
                 "error_code" => "01",
                 "error_msg" => "Error extracting recipes from api"
