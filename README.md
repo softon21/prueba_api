@@ -4,6 +4,7 @@ Prueba API Marc Ibi
 ## Para descargar en local ##
 - git clone https://github.com/softon21/prueba_api.git
 - composer install
+- Renombrar ``` .env.dist ``` >> ``` .env ```
 - Para lanzar la aplicación: ``` php -S 127.0.0.1:8000 -t public ```
 
 
