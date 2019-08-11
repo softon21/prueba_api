@@ -31,10 +31,33 @@ class ApiController extends BaseController
         //GET DATA FROM EXTERNAL API
         $response_object = $this->getRestful('', 'GET');
 
+        return $this->generateResponse($response_object);
+    }
+
+    /**
+     * Find recipes by keyword
+     * @FOSRest\Get("/recipes/find/{word}")
+     * @param $word
+     *
+     * @return Response
+     */
+    public function findRecipesAction($word)
+    {
+        //GET DATA FROM EXTERNAL API
+        $response_object = $this->getRestful('?q=' . $word, 'GET');
+
+        return $this->generateResponse($response_object);
+    }
+
+    /*
+     * THIS FUNCTION WILL GENERATE THE RESPONSE, PARSED TO JSON
+     */
+    private function generateResponse(RestfulResponse $restfulResponse)
+    {
         //IF 200, GET THE RESULTS AND CREATE RESPONSE
-        if($response_object->code == 200)
+        if($restfulResponse->code == 200)
         {
-            $ar = json_decode($response_object->body, true);
+            $ar = json_decode($restfulResponse->body, true);
             $results = $ar['results'];
             $response = $this->createApiResponse($results, 200);
         }
